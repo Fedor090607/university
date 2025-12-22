@@ -25,7 +25,7 @@ cleaned_matches = [(name.strip(), address.strip(), phone.strip(), hours.strip())
 
 # запись результатов в csv с запятой
 with open('output.csv', 'w', newline='', encoding='utf-8-sig') as csvfile:
-    writer = csv.writer(csvfile, delimiter=',')  # Указываем разделитель ";"
+    writer = csv.writer(csvfile, delimiter=',') 
 
     writer.writerow(['Наименование', 'Адрес', 'Телефон', 'Часы работы'])
     #строки данных
