@@ -3,10 +3,10 @@ import csv
 import ssl
 import urllib.request
 
+#страницу берет и сохр в файл
 url = "https://msk.spravker.ru/avtoservisy-avtotehcentry/"
 response = urllib.request.urlopen(url)
 html_content = response.read().decode()
-
 with open('html.txt', mode='w', encoding='utf8') as file:
     file.write(html_content)
 
