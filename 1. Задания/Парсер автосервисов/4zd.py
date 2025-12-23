@@ -10,7 +10,10 @@ html_content = response.read().decode()
 with open('html.txt', mode='w', encoding='utf8') as file:
     file.write(html_content)
 
+#[^<] любой символу кроме <
 #\s* для удал ненужных пробелов
+#+? квантификатор 1 или более кроме <
+#.*? любой символ кроме переноса строки 
 re_algorithm = r'class="org-widget-header__title-link">\s*([^<]+?)\s*</a>.*?' \
                r'org-widget-header__meta--location">\s*([^<]+?)\s*</span>.*?' \
                r'<dt class="spec__index"><span class="spec__index-inner">Телефон</span></dt>.*?' \
