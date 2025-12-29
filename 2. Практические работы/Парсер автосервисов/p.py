@@ -3,13 +3,12 @@ import csv
 import ssl
 import urllib.request
 
-#сохр html страницу в файл
 url = "https://msk.spravker.ru/avtoservisy-avtotehcentry/"
 response = urllib.request.urlopen(url)
 html_content = response.read().decode()
+
 with open('t.txt', mode='w', encoding='utf8') as file:
     file.write(html_content)
-
 
 re_algorithm = r'class="org-widget-header__title-link">\s*([^<]+?)\s*</a>.*?' \
                r'org-widget-header__meta--location">\s*([^<]+?)\s*</span>.*?' \
@@ -18,12 +17,9 @@ re_algorithm = r'class="org-widget-header__title-link">\s*([^<]+?)\s*</a>.*?' \
                r'<dt class="spec__index"><span class="spec__index-inner">Часы работы</span></dt>.*?' \
                r'<dd class="spec__value">\s*([^<]+?)\s*</dd>'
 
-# поиск совпадений
 matches = re.findall(re_algorithm, html_content, re.DOTALL)
-# очистка от пробелов
 cleaned_matches = [(name.strip(), address.strip(), phone.strip(), hours.strip()) for name, address, phone, hours in matches]
 
-#сохр в csv с запятой
 with open('c.csv', 'w', newline='', encoding='utf-8-sig') as csvfile:
     writer = csv.writer(csvfile, delimiter=',') 
 
