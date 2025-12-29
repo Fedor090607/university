@@ -7,7 +7,7 @@ import urllib.request
 url = "https://msk.spravker.ru/avtoservisy-avtotehcentry/"
 response = urllib.request.urlopen(url)
 html_content = response.read().decode()
-with open('html.txt', mode='w', encoding='utf8') as file:
+with open('t.txt', mode='w', encoding='utf8') as file:
     file.write(html_content)
 
 
@@ -24,7 +24,7 @@ matches = re.findall(re_algorithm, html_content, re.DOTALL)
 cleaned_matches = [(name.strip(), address.strip(), phone.strip(), hours.strip()) for name, address, phone, hours in matches]
 
 #сохр в csv с запятой
-with open('output.csv', 'w', newline='', encoding='utf-8-sig') as csvfile:
+with open('c.csv', 'w', newline='', encoding='utf-8-sig') as csvfile:
     writer = csv.writer(csvfile, delimiter=',') 
 
     writer.writerow(['Наименование', 'Адрес', 'Телефон', 'Часы работы'])
